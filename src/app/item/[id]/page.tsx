@@ -1,6 +1,7 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { items, categoryMeta } from '@/lib/data';
+import { items, categoryMeta, getItemsByCategory } from '@/lib/data';
 import ItemCard from '@/components/ui/ItemCard';
 
 export async function generateStaticParams() {
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   if (!item) return {};
   return {
     title: `${item.name} — Bit of Nordic`,
-    description: item.description.slice(0, 160),
+    description: item.description?.slice(0, 160) ?? '',
   };
 }
 
@@ -64,10 +65,10 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-            {item.images[0] ? (
+            {item.images?.[0] ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
-                src={item.images[0]}
+                src={item.images?.[0]}
                 alt={item.name}
                 style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '4px' }}
               />
@@ -84,9 +85,9 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
           </div>
 
           {/* Thumbnail strip (future use) */}
-          {item.images.length > 1 && (
+          {(item.images?.length ?? 0) > 1 && (
             <div style={{ display: 'flex', gap: '8px', marginTop: '12px' }}>
-              {item.images.map((src, i) => (
+              {(item.images ?? []).map((src, i) => (
                 <div key={i} style={{
                   width: '64px',
                   height: '64px',

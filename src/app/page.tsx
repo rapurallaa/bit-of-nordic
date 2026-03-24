@@ -4,7 +4,7 @@ import ItemCard from '@/components/ui/ItemCard';
 import CategoryCard from '@/components/ui/CategoryCard';
 import { Category } from '@/lib/types';
 
-const categories: Category[] = ['watches', 'coins', 'glass'];
+const categories: Category[] = ['watches', 'coins', 'glass', 'jewellery'];
 
 export default function HomePage() {
   const featuredItems = items.filter((i) => i.featured).slice(0, 3);
@@ -100,10 +100,10 @@ export default function HomePage() {
           }}>Browse</p>
           <h2 style={{ marginBottom: '36px' }}>By Category</h2>
 
-          {/* Fixed 3-column grid */}
+          {/* 4-column category grid */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+            gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
             gap: '20px',
           }}>
             {categories.map((cat) => {

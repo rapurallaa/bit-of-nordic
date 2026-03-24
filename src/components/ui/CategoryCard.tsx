@@ -3,14 +3,21 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Category } from '@/lib/types';
 
-interface CategoryCardProps {
+const categoryIcon: Record<Category, string> = {
+  watches: '◷',
+  coins: '◎',
+  glass: '◇',
+  jewellery: '◈',
+};
+
+interface Props {
   category: Category;
   label: string;
   count: number;
   description: string;
 }
 
-export default function CategoryCard({ category, label, count, description }: CategoryCardProps) {
+export default function CategoryCard({ category, label, count, description }: Props) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -20,62 +27,66 @@ export default function CategoryCard({ category, label, count, description }: Ca
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <article style={{
-        backgroundColor: hovered ? 'white' : 'var(--color-linen)',
+      <div style={{
+        backgroundColor: 'white',
         border: '1px solid var(--color-mist)',
         borderRadius: '4px',
-        padding: '36px',
-        transition: 'background-color 0.2s ease, box-shadow 0.2s ease',
-        boxShadow: hovered ? 'var(--shadow-md)' : 'none',
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
+        padding: '36px 32px',
+        boxShadow: hovered ? 'var(--shadow-md)' : 'var(--shadow-sm)',
+        transform: hovered ? 'translateY(-3px)' : 'translateY(0)',
+        transition: 'box-shadow 0.25s ease, transform 0.25s ease',
       }}>
-
-        <div style={{ flex: 1 }}>
-          <h3 style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: '1.75rem',
-            fontWeight: 400,
-            color: 'var(--color-charcoal)',
-            marginBottom: '16px',
-          }}>
-            {label}
-          </h3>
-
-          <p style={{
-            fontSize: '0.9rem',
-            color: 'var(--color-stone)',
-            lineHeight: 1.7,
-            marginBottom: '20px',
-          }}>
-            {description}
-          </p>
-
-          <p style={{
-            fontSize: '0.75rem',
-            color: 'var(--color-bark)',
-            letterSpacing: '0.06em',
-            marginBottom: '28px',
-          }}>
-            {count} {count === 1 ? 'item' : 'items'}
-          </p>
+        <div style={{
+          fontSize: '1.75rem',
+          color: hovered ? 'var(--color-forest)' : 'var(--color-mist)',
+          marginBottom: '20px',
+          transition: 'color 0.2s ease',
+          lineHeight: 1,
+        }}>
+          {categoryIcon[category]}
         </div>
+
+        <h3 style={{
+          fontFamily: 'var(--font-display)',
+          fontSize: '1.5rem',
+          fontWeight: 400,
+          color: 'var(--color-charcoal)',
+          marginBottom: '8px',
+        }}>
+          {label}
+        </h3>
+
+        <p style={{
+          fontSize: '0.8rem',
+          color: 'var(--color-bark)',
+          lineHeight: 1.65,
+          marginBottom: '24px',
+        }}>
+          {description}
+        </p>
 
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '8px',
-          color: hovered ? 'var(--color-forest)' : 'var(--color-stone)',
-          fontSize: '0.8rem',
-          letterSpacing: '0.06em',
-          transition: 'color 0.2s ease',
+          justifyContent: 'space-between',
         }}>
-          <span>Browse collection</span>
-          <span style={{ fontSize: '1rem' }}>→</span>
+          <span style={{
+            fontSize: '0.65rem',
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            color: 'var(--color-bark)',
+          }}>
+            {count} {count === 1 ? 'piece' : 'pieces'}
+          </span>
+          <span style={{
+            fontSize: '0.85rem',
+            color: hovered ? 'var(--color-forest)' : 'var(--color-mist)',
+            transition: 'color 0.2s ease',
+          }}>
+            →
+          </span>
         </div>
-
-      </article>
+      </div>
     </Link>
   );
 }
