@@ -25,7 +25,7 @@ export default function CollectionsPage() {
         }}>All Collections</p>
         <h1 style={{ marginBottom: '16px' }}>The Collection</h1>
         <p style={{ color: 'var(--color-bark)', maxWidth: '520px', lineHeight: 1.75 }}>
-          Vintage Nordic objects gathered over many years — each one chosen for its history, craft, and connection to the Nordic tradition.
+          Vintage Nordic objects gathered over many years — each one chosen for its history, craft, and connection to Nordic making traditions.
         </p>
       </div>
 

@@ -47,7 +47,7 @@ export default function Footer() {
               lineHeight: 1.7,
               maxWidth: '280px',
             }}>
-              A personal collection of vintage Nordic objects — timepieces, coins, and design glass gathered over many years across Finland, Sweden and Norway.
+              A personal collection of vintage Nordic objects — timepieces, coins, and design glass gathered over many years across the Nordic region.
             </p>
           </div>
 
@@ -100,7 +100,7 @@ export default function Footer() {
             color: 'var(--color-mist)',
             letterSpacing: '0.04em',
           }}>
-            Helsinki · Stockholm · Oslo
+            The Nordic Region
           </p>
         </div>
 

@@ -47,7 +47,7 @@ export default function HomePage() {
           margin: '0 auto 48px',
           lineHeight: 1.75,
         }}>
-          Watches, coins, and design glass gathered over decades from across Finland, Sweden, and Norway.
+          Watches, coins, and design glass gathered over decades from across the Nordic region.
         </p>
 
         <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>

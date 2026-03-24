@@ -22,7 +22,7 @@ export default function AboutPage() {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
 
         <p style={{ fontSize: '1rem', color: 'var(--color-stone)', lineHeight: 1.85 }}>
-          I have been collecting vintage Nordic objects for most of my adult life. It started with a single watch — a battered Tissot found in a market stall in Stockholm on a cold November morning — and grew, slowly and without any real plan, into what it is today. A collection of objects that share a quality I find difficult to describe precisely, but recognise immediately: they were made by people who cared.
+          I have been collecting vintage Nordic objects for most of my adult life. It started with a single watch — a battered Tissot found in a market stall on a cold November morning — and grew, slowly and without any real plan, into what it is today. A collection of objects that share a quality I find difficult to describe precisely, but recognise immediately: they were made by people who cared.
         </p>
 
         <p style={{ fontSize: '1rem', color: 'var(--color-stone)', lineHeight: 1.85 }}>
@@ -30,7 +30,7 @@ export default function AboutPage() {
         </p>
 
         <p style={{ fontSize: '1rem', color: 'var(--color-stone)', lineHeight: 1.85 }}>
-          My Nordic heritage is a part of why these objects speak to me. There is something in their restraint — the absence of excess, the preference for material honesty — that feels familiar. When I hold a Finnish silver markka from 1913 or an Iittala vase from the 1960s, I am holding something that belongs to a shared story. Bit of Nordic is my attempt to give these pieces a longer chapter in that story, and perhaps to find them homes with people who will appreciate them the same way.
+          My Nordic heritage is a part of why these objects speak to me. There is something in their restraint — the absence of excess, the preference for material honesty — that feels familiar. When I hold the Iittala glass vase and an Omega watch from the 1960s, I&apos;m struck by how both embody the era&apos;s devotion to pure, purposeful form — each a masterclass in Scandinavian and Swiss precision respectively, where honest materials and clean lines were elevated into timeless objects still coveted by collectors today. Bit of Nordic is my attempt to give these pieces a longer chapter in that story.
         </p>
 
         <p style={{ fontSize: '1rem', color: 'var(--color-stone)', lineHeight: 1.85 }}>
