@@ -106,3 +106,30 @@ img {
   max-width: 100%;
   display: block;
 }
+
+/* Responsive utilities */
+.grid-2col {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 64px;
+}
+
+@media (max-width: 768px) {
+  .grid-2col {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .grid-3col {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hide-mobile {
+    display: none !important;
+  }
+
+  main {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}

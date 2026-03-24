@@ -16,7 +16,7 @@ export default function HomePage() {
       <section style={{
         maxWidth: '1200px',
         margin: '0 auto',
-        padding: '100px 40px 96px',
+        padding: '96px 40px 88px',
         textAlign: 'center',
       }}>
         <div style={{
@@ -29,11 +29,10 @@ export default function HomePage() {
         <h1 style={{
           fontFamily: 'var(--font-display)',
           fontWeight: 300,
-          fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+          fontSize: 'clamp(2.75rem, 6vw, 4.5rem)',
           color: 'var(--color-charcoal)',
           lineHeight: 1.1,
           letterSpacing: '-0.02em',
-          marginBottom: '28px',
           maxWidth: '760px',
           margin: '0 auto 28px',
         }}>
@@ -44,7 +43,7 @@ export default function HomePage() {
         <p style={{
           fontSize: '1.05rem',
           color: 'var(--color-bark)',
-          maxWidth: '480px',
+          maxWidth: '460px',
           margin: '0 auto 48px',
           lineHeight: 1.75,
         }}>
@@ -55,11 +54,11 @@ export default function HomePage() {
           <Link href="/collections" style={{
             backgroundColor: 'var(--color-forest)',
             color: 'white',
-            padding: '14px 32px',
+            padding: '14px 36px',
             borderRadius: '2px',
             fontFamily: 'var(--font-sans)',
-            fontSize: '0.8rem',
-            letterSpacing: '0.08em',
+            fontSize: '0.75rem',
+            letterSpacing: '0.1em',
             textTransform: 'uppercase',
             textDecoration: 'none',
             display: 'inline-block',
@@ -69,12 +68,12 @@ export default function HomePage() {
           <Link href="/about" style={{
             backgroundColor: 'transparent',
             color: 'var(--color-stone)',
-            padding: '13px 32px',
+            padding: '13px 36px',
             border: '1px solid var(--color-mist)',
             borderRadius: '2px',
             fontFamily: 'var(--font-sans)',
-            fontSize: '0.8rem',
-            letterSpacing: '0.08em',
+            fontSize: '0.75rem',
+            letterSpacing: '0.1em',
             textTransform: 'uppercase',
             textDecoration: 'none',
             display: 'inline-block',
@@ -89,7 +88,7 @@ export default function HomePage() {
         backgroundColor: 'var(--color-birch)',
         borderTop: '1px solid var(--color-mist)',
         borderBottom: '1px solid var(--color-mist)',
-        padding: '80px 40px',
+        padding: '72px 40px',
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <p style={{
@@ -97,13 +96,15 @@ export default function HomePage() {
             letterSpacing: '0.14em',
             textTransform: 'uppercase',
             color: 'var(--color-bark)',
-            marginBottom: '12px',
+            marginBottom: '10px',
           }}>Browse</p>
-          <h2 style={{ marginBottom: '40px' }}>By Category</h2>
+          <h2 style={{ marginBottom: '36px' }}>By Category</h2>
+
+          {/* Fixed 3-column grid */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '24px',
+            gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+            gap: '20px',
           }}>
             {categories.map((cat) => {
               const count = items.filter((i) => i.category === cat).length;
@@ -123,19 +124,21 @@ export default function HomePage() {
       </section>
 
       {/* ── Recent Additions ── */}
-      <section style={{ padding: '80px 40px' }}>
+      <section style={{ padding: '72px 40px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <p style={{
             fontSize: '0.65rem',
             letterSpacing: '0.14em',
             textTransform: 'uppercase',
             color: 'var(--color-bark)',
-            marginBottom: '12px',
+            marginBottom: '10px',
           }}>Latest</p>
-          <h2 style={{ marginBottom: '40px' }}>Recent Additions</h2>
+          <h2 style={{ marginBottom: '36px' }}>Recent Additions</h2>
+
+          {/* Fixed 3-column equal grid */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+            gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
             gap: '24px',
             marginBottom: '40px',
           }}>
@@ -143,11 +146,12 @@ export default function HomePage() {
               <ItemCard key={item.id} item={item} />
             ))}
           </div>
+
           <div style={{ textAlign: 'center' }}>
             <Link href="/collections" style={{
               fontFamily: 'var(--font-sans)',
-              fontSize: '0.8rem',
-              letterSpacing: '0.08em',
+              fontSize: '0.75rem',
+              letterSpacing: '0.1em',
               textTransform: 'uppercase',
               color: 'var(--color-forest)',
               textDecoration: 'none',
@@ -162,16 +166,14 @@ export default function HomePage() {
       <section style={{
         backgroundColor: 'var(--color-linen)',
         borderTop: '1px solid var(--color-mist)',
-        padding: '80px 40px',
+        padding: '72px 40px',
       }}>
         <div style={{
           maxWidth: '1200px',
           margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '64px',
           alignItems: 'center',
-        }}>
+        }}
+        className="grid-2col">
 
           {/* Left — text */}
           <div>
@@ -185,7 +187,7 @@ export default function HomePage() {
             <h2 style={{ marginBottom: '24px' }}>Crafted to Last,<br />Found by Chance</h2>
             <p style={{
               color: 'var(--color-stone)',
-              lineHeight: 1.8,
+              lineHeight: 1.85,
               marginBottom: '20px',
               fontSize: '0.95rem',
             }}>
@@ -193,7 +195,7 @@ export default function HomePage() {
             </p>
             <p style={{
               color: 'var(--color-stone)',
-              lineHeight: 1.8,
+              lineHeight: 1.85,
               marginBottom: '32px',
               fontSize: '0.95rem',
             }}>
@@ -201,8 +203,8 @@ export default function HomePage() {
             </p>
             <Link href="/about" style={{
               fontFamily: 'var(--font-sans)',
-              fontSize: '0.8rem',
-              letterSpacing: '0.08em',
+              fontSize: '0.75rem',
+              letterSpacing: '0.1em',
               textTransform: 'uppercase',
               color: 'var(--color-forest)',
               textDecoration: 'none',
@@ -227,20 +229,20 @@ export default function HomePage() {
             }} />
             <blockquote style={{
               fontFamily: 'var(--font-display)',
-              fontSize: '1.6rem',
+              fontSize: '1.55rem',
               fontStyle: 'italic',
               fontWeight: 300,
               color: 'var(--color-charcoal)',
-              lineHeight: 1.4,
+              lineHeight: 1.45,
               margin: 0,
             }}>
-              "Objects that survive are never ordinary. They are the ones that were made with care — and kept with the same."
+              &ldquo;Objects that survive are never ordinary. They are the ones that were made with care — and kept with the same.&rdquo;
             </blockquote>
             <p style={{
               marginTop: '28px',
-              fontSize: '0.75rem',
+              fontSize: '0.7rem',
               color: 'var(--color-bark)',
-              letterSpacing: '0.06em',
+              letterSpacing: '0.08em',
             }}>
               — On collecting
             </p>

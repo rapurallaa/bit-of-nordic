@@ -11,13 +11,20 @@ const categoryLabels: Record<string, string> = {
   other: 'Other',
 };
 
+const categorySymbol: Record<string, string> = {
+  watches: '◷',
+  coins: '◎',
+  glass: '◇',
+  other: '·',
+};
+
 export default function ItemCard({ item }: { item: Item }) {
   const [hovered, setHovered] = useState(false);
 
   return (
     <Link
       href={`/item/${item.id}`}
-      style={{ textDecoration: 'none', display: 'block' }}
+      style={{ textDecoration: 'none', display: 'block', height: '100%' }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -27,19 +34,24 @@ export default function ItemCard({ item }: { item: Item }) {
         overflow: 'hidden',
         backgroundColor: 'white',
         boxShadow: hovered ? 'var(--shadow-md)' : 'var(--shadow-sm)',
-        transform: hovered ? 'translateY(-2px)' : 'translateY(0)',
+        transform: hovered ? 'translateY(-3px)' : 'translateY(0)',
         transition: 'box-shadow 0.25s ease, transform 0.25s ease',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
       }}>
 
-        {/* Image area */}
+        {/* Image / Placeholder */}
         <div style={{
           aspectRatio: '4/3',
           backgroundColor: 'var(--color-linen)',
           position: 'relative',
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
+          borderBottom: '1px solid var(--color-mist)',
         }}>
           {item.images[0] ? (
             <Image
@@ -49,14 +61,24 @@ export default function ItemCard({ item }: { item: Item }) {
               style={{ objectFit: 'cover' }}
             />
           ) : (
-            <span style={{
-              fontSize: '0.65rem',
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              color: 'var(--color-mist)',
-            }}>
-              {categoryLabels[item.category]}
-            </span>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{
+                fontSize: '2rem',
+                color: 'var(--color-mist)',
+                marginBottom: '8px',
+                lineHeight: 1,
+              }}>
+                {categorySymbol[item.category]}
+              </div>
+              <span style={{
+                fontSize: '0.6rem',
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                color: 'var(--color-mist)',
+              }}>
+                {categoryLabels[item.category]}
+              </span>
+            </div>
           )}
 
           {/* Sold badge */}
@@ -76,13 +98,31 @@ export default function ItemCard({ item }: { item: Item }) {
               Sold
             </div>
           )}
+
+          {/* Featured dot */}
+          {item.featured && !item.sold && (
+            <div style={{
+              position: 'absolute',
+              top: '12px',
+              left: '12px',
+              backgroundColor: 'var(--color-forest-light)',
+              color: 'var(--color-forest)',
+              fontSize: '0.6rem',
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              padding: '4px 10px',
+              borderRadius: '2px',
+            }}>
+              New
+            </div>
+          )}
         </div>
 
         {/* Details */}
-        <div style={{ padding: '20px' }}>
+        <div style={{ padding: '20px 20px 24px', flex: 1, display: 'flex', flexDirection: 'column' }}>
           <p style={{
-            fontSize: '0.65rem',
-            letterSpacing: '0.1em',
+            fontSize: '0.6rem',
+            letterSpacing: '0.12em',
             textTransform: 'uppercase',
             color: 'var(--color-bark)',
             marginBottom: '8px',
@@ -96,7 +136,8 @@ export default function ItemCard({ item }: { item: Item }) {
             fontWeight: 400,
             color: 'var(--color-charcoal)',
             marginBottom: '6px',
-            lineHeight: 1.2,
+            lineHeight: 1.25,
+            flex: 1,
           }}>
             {item.name}
           </h3>
@@ -104,21 +145,31 @@ export default function ItemCard({ item }: { item: Item }) {
           <p style={{
             fontSize: '0.8rem',
             color: 'var(--color-bark)',
-            marginBottom: item.price ? '14px' : '0',
+            marginBottom: '16px',
           }}>
             {item.era} · {item.origin}
           </p>
 
-          {item.price && !item.sold && (
-            <p style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: '1.1rem',
-              color: 'var(--color-amber)',
-              fontWeight: 400,
-            }}>
-              € {item.price.toLocaleString()}
-            </p>
-          )}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            {item.price && !item.sold ? (
+              <p style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.15rem',
+                color: 'var(--color-amber)',
+                fontWeight: 400,
+              }}>
+                € {item.price.toLocaleString()}
+              </p>
+            ) : item.sold ? (
+              <p style={{ fontSize: '0.75rem', color: 'var(--color-bark)', fontStyle: 'italic' }}>Sold</p>
+            ) : null}
+
+            <span style={{
+              fontSize: '0.8rem',
+              color: hovered ? 'var(--color-forest)' : 'var(--color-mist)',
+              transition: 'color 0.2s ease',
+            }}>→</span>
+          </div>
         </div>
 
       </article>

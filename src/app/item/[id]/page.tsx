@@ -51,12 +51,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
       </Link>
 
       {/* Item detail */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gap: '64px',
-        marginBottom: '80px',
-      }}>
+      <div className="grid-2col" style={{ marginBottom: '80px' }}>
 
         {/* Left — image */}
         <div>
